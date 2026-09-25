@@ -1,6 +1,21 @@
 import React, { useState } from 'react';
-import { X, Send, CheckCircle2, Code2, Sparkles, Download } from 'lucide-react';
+import { X, Send, CheckCircle2, Code2, Sparkles, Download, Mail } from 'lucide-react';
 import { playHoverSound, playClickSound } from '../utils/audio';
+
+const GithubIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+    <path d="M9 18c-4.51 2-5-2-7-2" />
+  </svg>
+);
+
+const LinkedinIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect width="4" height="12" x="2" y="9" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
 
 export default function Modals({ activeModal, onClose, soundEnabled }) {
   const [formSent, setFormSent] = useState(false);
@@ -16,12 +31,18 @@ export default function Modals({ activeModal, onClose, soundEnabled }) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (soundEnabled) playClickSound();
+    
+    // Construct mailto URL to directly email vivekmaurya9612@gmail.com
+    const subject = encodeURIComponent(`Portfolio Message from ${formData.name}`);
+    const body = encodeURIComponent(`${formData.message}\n\n---\nSender: ${formData.name}\nEmail: ${formData.email}`);
+    window.location.href = `mailto:vivekmaurya9612@gmail.com?subject=${subject}&body=${body}`;
+
     setFormSent(true);
     setTimeout(() => {
       setFormSent(false);
       setFormData({ name: '', email: '', message: '' });
       onClose();
-    }, 2000);
+    }, 2500);
   };
 
   return (
@@ -178,17 +199,57 @@ export default function Modals({ activeModal, onClose, soundEnabled }) {
 
         {/* CONTACT */}
         {activeModal === 'contact' && (
-          <div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+            {/* Direct Connect Quick Cards */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '10px' }}>
+              <a
+                href="mailto:vivekmaurya9612@gmail.com"
+                className="btn-secondary-glass"
+                style={{ justifyContent: 'center', padding: '10px 14px', fontSize: '0.85rem' }}
+                onMouseEnter={() => soundEnabled && playHoverSound()}
+                onClick={() => soundEnabled && playClickSound()}
+              >
+                <Mail size={15} />
+                <span>Email Me</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/vivek-kumar-maurya-bb754028a/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary-glass"
+                style={{ justifyContent: 'center', padding: '10px 14px', fontSize: '0.85rem' }}
+                onMouseEnter={() => soundEnabled && playHoverSound()}
+                onClick={() => soundEnabled && playClickSound()}
+              >
+                <LinkedinIcon />
+                <span>LinkedIn</span>
+              </a>
+              <a
+                href="https://github.com/vivek-dev302"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary-glass"
+                style={{ justifyContent: 'center', padding: '10px 14px', fontSize: '0.85rem' }}
+                onMouseEnter={() => soundEnabled && playHoverSound()}
+                onClick={() => soundEnabled && playClickSound()}
+              >
+                <GithubIcon />
+                <span>GitHub</span>
+              </a>
+            </div>
+
             {formSent ? (
-              <div style={{ textAlign: 'center', padding: '2.5rem 1rem' }}>
+              <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
                 <CheckCircle2 size={48} color="#22c55e" style={{ margin: '0 auto 1rem' }} />
-                <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.5rem' }}>Message Sent!</h3>
-                <p style={{ color: 'rgba(255,255,255,0.8)' }}>Thanks for reaching out — I'll get back to you soon.</p>
+                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '0.5rem' }}>Opening Email Client...</h3>
+                <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.9rem' }}>
+                  Preparing your email to <strong>vivekmaurya9612@gmail.com</strong>.
+                </p>
               </div>
             ) : (
               <form className="contact-form" onSubmit={handleFormSubmit}>
                 <div className="form-group">
-                  <label className="form-label">Name</label>
+                  <label className="form-label">Your Name</label>
                   <input
                     type="text"
                     required
@@ -199,7 +260,7 @@ export default function Modals({ activeModal, onClose, soundEnabled }) {
                   />
                 </div>
                 <div className="form-group">
-                  <label className="form-label">Email</label>
+                  <label className="form-label">Your Email</label>
                   <input
                     type="email"
                     required
@@ -212,9 +273,9 @@ export default function Modals({ activeModal, onClose, soundEnabled }) {
                 <div className="form-group">
                   <label className="form-label">Message</label>
                   <textarea
-                    rows={4}
+                    rows={3}
                     required
-                    placeholder="What's on your mind?"
+                    placeholder="Write a message to send to vivekmaurya9612@gmail.com..."
                     className="form-textarea"
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -223,11 +284,11 @@ export default function Modals({ activeModal, onClose, soundEnabled }) {
                 <button
                   type="submit"
                   className="btn-primary-white"
-                  style={{ alignSelf: 'flex-start', marginTop: '6px' }}
+                  style={{ alignSelf: 'flex-start', marginTop: '4px' }}
                   onMouseEnter={() => soundEnabled && playHoverSound()}
                 >
                   <Send size={16} />
-                  <span>Send Message</span>
+                  <span>Send Mail to Vivek</span>
                 </button>
               </form>
             )}
@@ -240,9 +301,30 @@ export default function Modals({ activeModal, onClose, soundEnabled }) {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
               <div>
                 <h3 style={{ fontSize: '1.3rem', fontWeight: 700 }}>Vivek Kumar Maurya</h3>
-                <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.7)' }}>
-                  Software Developer &bull; vivekmaurya9612@gmail.com
-                </p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginTop: '4px', flexWrap: 'wrap' }}>
+                  <a
+                    href="mailto:vivekmaurya9612@gmail.com"
+                    style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.85)', textDecoration: 'underline' }}
+                  >
+                    vivekmaurya9612@gmail.com
+                  </a>
+                  <a
+                    href="https://github.com/vivek-dev302"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.85)', textDecoration: 'underline' }}
+                  >
+                    github.com/vivek-dev302
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/vivek-kumar-maurya-bb754028a/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.85)', textDecoration: 'underline' }}
+                  >
+                    LinkedIn
+                  </a>
+                </div>
               </div>
               <a
                 className="btn-primary-white"

@@ -1,6 +1,10 @@
-# Lohitha — Interactive Portfolio
+# Vivek Kumar Maurya — Interactive Portfolio
 
 > **Vibe coded** with [Antigravity IDE](https://antigravity.dev) + Gemini ✨
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/vivek-kumar-maurya-bb754028a/)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/vivek-dev302)
+[![Email](https://img.shields.io/badge/Email-vivekmaurya9612%40gmail.com-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:vivekmaurya9612@gmail.com)
 
 A luxury, award-winning portfolio hero section featuring a real-time **60 FPS zero-lag cursor-tracking character** — the character's head follows your cursor across a full 360° rotation, pre-extracted as 64 seamless WebP frames using Python & OpenCV.
 

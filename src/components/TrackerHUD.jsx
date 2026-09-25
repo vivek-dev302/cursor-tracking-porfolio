@@ -75,11 +75,11 @@ export default function TrackerHUD({ gazeData, soundEnabled }) {
       {/* Social Links — GitHub, LinkedIn, Email */}
       <div className="social-links">
         <a
-          href="https://github.com/yourusername"
+          href="https://github.com/vivek-dev302"
           target="_blank"
           rel="noopener noreferrer"
           className="social-btn"
-          title="GitHub"
+          title="GitHub (vivek-dev302)"
           onMouseEnter={() => soundEnabled && playHoverSound()}
           onClick={() => soundEnabled && playClickSound()}
           aria-label="GitHub Profile"
@@ -87,7 +87,7 @@ export default function TrackerHUD({ gazeData, soundEnabled }) {
           <GithubIcon />
         </a>
         <a
-          href="https://www.linkedin.com/in/your-profile"
+          href="https://www.linkedin.com/in/vivek-kumar-maurya-bb754028a/"
           target="_blank"
           rel="noopener noreferrer"
           className="social-btn"
