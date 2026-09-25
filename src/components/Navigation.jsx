@@ -16,9 +16,9 @@ export default function Navigation({ activeModal, setActiveModal, soundEnabled, 
   return (
     <header className="header-container interactive">
       {/* Brand / Status Pill */}
-      <div className="brand-badge" title="Available for Select Projects & Architecture">
+      <div className="brand-badge" title="Open to Internships & Projects">
         <span className="status-dot"></span>
-        <span>Vivek &bull; Full Stack Architect</span>
+        <span>Vivek Kumar Maurya &bull; Software Developer</span>
       </div>
 
       {/* Floating Frosted-Glass Navigation Pill Centered */}

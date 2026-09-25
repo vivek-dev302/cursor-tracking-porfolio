@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Compass, Eye } from 'lucide-react';
+import { Mail, Eye } from 'lucide-react';
 import { playHoverSound, playClickSound } from '../utils/audio';
 
 const GithubIcon = () => (
@@ -17,12 +17,7 @@ const LinkedinIcon = () => (
   </svg>
 );
 
-const TwitterIcon = () => (
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M4 4l11.733 16h4.267l-11.733-16z" />
-    <path d="M4 20l6.768-6.768m2.464-2.464l6.768-6.768" />
-  </svg>
-);
+
 
 export default function TrackerHUD({ gazeData, soundEnabled }) {
   const { angleDeg = 0, frameIndex = 0, isEyeContact = false } = gazeData || {};
@@ -77,10 +72,10 @@ export default function TrackerHUD({ gazeData, soundEnabled }) {
         </div>
       </div>
 
-      {/* Social Links */}
+      {/* Social Links — GitHub, LinkedIn, Email */}
       <div className="social-links">
         <a
-          href="https://github.com"
+          href="https://github.com/yourusername"
           target="_blank"
           rel="noopener noreferrer"
           className="social-btn"
@@ -92,7 +87,7 @@ export default function TrackerHUD({ gazeData, soundEnabled }) {
           <GithubIcon />
         </a>
         <a
-          href="https://linkedin.com"
+          href="https://www.linkedin.com/in/your-profile"
           target="_blank"
           rel="noopener noreferrer"
           className="social-btn"
@@ -104,21 +99,9 @@ export default function TrackerHUD({ gazeData, soundEnabled }) {
           <LinkedinIcon />
         </a>
         <a
-          href="https://twitter.com"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="mailto:vivekmaurya9612@gmail.com"
           className="social-btn"
-          title="Twitter / X"
-          onMouseEnter={() => soundEnabled && playHoverSound()}
-          onClick={() => soundEnabled && playClickSound()}
-          aria-label="Twitter Profile"
-        >
-          <TwitterIcon />
-        </a>
-        <a
-          href="mailto:contact@Vivek.dev"
-          className="social-btn"
-          title="Email"
+          title="vivekmaurya9612@gmail.com"
           onMouseEnter={() => soundEnabled && playHoverSound()}
           onClick={() => soundEnabled && playClickSound()}
           aria-label="Send Email"

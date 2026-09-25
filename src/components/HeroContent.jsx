@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, MessageSquare, FileText } from 'lucide-react';
+import { ArrowUpRight, MessageSquare } from 'lucide-react';
 import { playHoverSound, playClickSound } from '../utils/audio';
 
 export default function HeroContent({ onOpenModal, soundEnabled }) {
@@ -11,10 +11,11 @@ export default function HeroContent({ onOpenModal, soundEnabled }) {
       {/* Name */}
       <h1 className="hero-name">Vivek</h1>
 
-      {/* Compact 3-line bio */}
+      {/* Compact 3-line bio from resume */}
       <p className="hero-bio">
-        Full-Stack Engineer & Creative Developer crafting high-performance
-        digital experiences, resilient architectures, and award-winning web aesthetics.
+        Software Developer specialising in <strong>React, Next.js & React Native</strong>.
+        Building full-stack apps, mobile experiences, and AI-powered tools — currently
+        exploring LLMs, RAG & Agentic AI.
       </p>
 
       {/* Two Stylish White Pill Buttons */}
