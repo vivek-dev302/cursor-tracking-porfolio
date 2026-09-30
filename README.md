@@ -10,7 +10,7 @@ A luxury, award-winning portfolio hero section featuring a real-time **60 FPS ze
 
 ---
 
-![Landing Page](public/screenshot.jpg)
+![Landing Page](public/screenshot.png)
 
 ---
 
